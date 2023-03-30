@@ -1,42 +1,23 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.scss";
-import { StepWizard } from "./components/StepWizard";
+import { StepWizard } from "./components/stepWizard/StepWizard";
+import { Step1 } from "./components/stepWizard/Step1";
+import { Step2 } from "./components/stepWizard/Step2";
+
 
 function App() {
   return (
-    <div className="App">
+    <div className="App vh-100">
       <header className=" container">
         <h1>Hellow World!</h1>
       </header>
       <main className=" container">
         <StepWizard>
-          <Step title="Title Step 1" value="Step1 Data" />
-          <Step title="Title Step 2" value="Step2 Data" />
+          <Step1 key="step1" value="1"/>
+          <Step2 key="step2" value={{data1:2.1,data2:2.2}}/>
         </StepWizard>
       </main>
-    </div>
-  );
-}
-
-function Step({ title, num, value, onChange }) {
-  return (
-    <div className="card">
-      <div className="card-header">Step {num}</div>
-      <div className="card-body">
-        <div className="card-title">
-          <h5>{title}</h5>
-        </div>
-        <div className="card-text">
-          <input
-            type="text"
-            defaultValue={value}
-            onChange={(e) => {
-              onChange(e.target.value, e.target.value !== "");
-            }}
-          />
-        </div>
-      </div>
     </div>
   );
 }
